@@ -1,6 +1,6 @@
 # Micah's Todo App
 
-Name: Micah Rubin. 
+Name: Micah Rubin<br>
 UMID: 9188 2977
 
 ## Features Added
@@ -13,12 +13,19 @@ Tasks support optional due dates via a date picker. Overdue tasks are visually h
 
 ### Eisenhower Matrix
 A full-width 2x2 grid displayed below the task list that automatically sorts active (non-completed) tasks into four quadrants:
-- **Q1 — Do First** (red): High priority and due within 3 days or overdue
+- **Q1 — Do First** (red): High priority and time-sensitive
 - **Q2 — Schedule** (green): High priority with no pressing deadline
 - **Q3 — Delegate** (yellow): Lower priority but time-sensitive
 - **Q4 — Eliminate** (gray): Lower priority with no urgent deadline
 
 The matrix updates in real time as tasks are added, completed, or modified.
+
+### How the Eisenhower Matrix Works
+The matrix uses two existing todo fields to classify each task along two axes:
+- **Importance (Y-axis):** Determined by the task's priority level. Tasks with a priority of "high" are classified as Important; all others (medium, low) are Not Important.
+- **Urgency (X-axis):** Determined by the task's due date. If a task has a due date that is within 3 days from now or already overdue, it is classified as Urgent. Tasks with no due date or a due date further than 3 days out are Not Urgent.
+
+The component (`components/EisenhowerMatrix.cl.jac`) filters out completed tasks, then loops through the remaining ones and pushes each into one of four lists based on the importance/urgency combination. These lists are rendered as a 2x2 CSS grid, where each quadrant is a card with a colored left border indicating its category. The matrix is placed in `frontend.cl.jac` as a full-width section below the two-column layout so it spans the entire width of the app.
 
 ## Installation and Running
 
