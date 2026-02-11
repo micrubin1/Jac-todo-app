@@ -1,6 +1,6 @@
 # Micah's Todo App
 
-Name: Micah Rubin
+Name: Micah Rubin. 
 UMID: 9188 2977
 
 ## Features Added
