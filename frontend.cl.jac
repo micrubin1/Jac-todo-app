@@ -10,7 +10,7 @@ import from .components.IngredientItem { IngredientItem }
 import from .components.EisenhowerMatrix { EisenhowerMatrix }
 
 sv import from main {
-    AddTodo, ListTodos, ToggleTodo, DeleteTodo, UpdateUrgency, UpdateDueDate,
+    AddTodo, ListTodos, ToggleTodo, DeleteTodo, UpdatePriority, UpdateDueDate,
     GenerateShoppingList, ListMealPlan, ClearMealPlan
 }
 
@@ -46,7 +46,7 @@ def:pub app -> any {
     async def addTodo -> None;
     async def toggleTodo(todoId: str) -> None;
     async def deleteTodo(todoId: str) -> None;
-    async def setUrgency(todoId: str, urgency: str) -> None;
+    async def setPriority(todoId: str, priority: str) -> None;
     async def setDueDate(todoId: str, dueDate: str) -> None;
     async def handleLogin -> None;
     async def handleSignup -> None;
@@ -123,7 +123,7 @@ def:pub app -> any {
                                                         todo={todo}
                                                         onToggle={toggleTodo}
                                                         onDelete={deleteTodo}
-                                                        onSetUrgency={setUrgency}
+                                                        onSetPriority={setPriority}
                                                         onSetDueDate={setDueDate}
                                                     /> for todo in todos
                                                 ]}

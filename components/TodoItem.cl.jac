@@ -1,12 +1,12 @@
 """Todo item component."""
 
-def:pub TodoItem(todo: dict, onToggle: any, onDelete: any, onSetUrgency: any, onSetDueDate: any) -> any {
-    nextUrgency = (
-        "medium" if todo.urgency == "low" else (
-            "high" if todo.urgency == "medium" else "low"
+def:pub TodoItem(todo: dict, onToggle: any, onDelete: any, onSetPriority: any, onSetDueDate: any) -> any {
+    nextPriority = (
+        "medium" if todo.priority == "low" else (
+            "high" if todo.priority == "medium" else "low"
         )
     );
-    urgencyClass = "urgency-badge urgency-" + (todo.urgency if todo.urgency else "low");
+    priorityClass = "priority-badge priority-" + (todo.priority if todo.priority else "low");
     isOverdue = todo.due_date and Date.parse(todo.due_date) < Date.now();
     dueDateClass = "todo-due-date todo-due-date-overdue" if isOverdue else "todo-due-date";
     return
@@ -24,10 +24,10 @@ def:pub TodoItem(todo: dict, onToggle: any, onDelete: any, onSetUrgency: any, on
                 <span className="category-badge">{todo.category}</span>
             ) if todo.category and todo.category != "other" else None}
             <span
-                className={urgencyClass}
-                onClick={lambda -> None { onSetUrgency(todo.id, nextUrgency); }}
+                className={priorityClass}
+                onClick={lambda -> None { onSetPriority(todo.id, nextPriority); }}
             >
-                {(todo.urgency if todo.urgency else "low")}
+                {(todo.priority if todo.priority else "low")}
             </span>
             <input
                 type="date"

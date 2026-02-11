@@ -16,7 +16,7 @@ impl app.addTodo -> None {
         "title": newTodo.title,
         "completed": newTodo.completed,
         "category": newTodo.category,
-        "urgency": newTodo.urgency,
+        "priority": newTodo.priority,
         "due_date": newTodo.due_date
     }]);
     newTodoText = "";
@@ -30,7 +30,7 @@ impl app.toggleTodo(todoId: str) -> None {
                 return {
                     "id": t.id, "title": t.title,
                     "completed": not t.completed, "category": t.category,
-                    "urgency": t.urgency, "due_date": t.due_date
+                    "priority": t.priority, "due_date": t.due_date
                 };
             }
             return t;
@@ -38,15 +38,15 @@ impl app.toggleTodo(todoId: str) -> None {
     );
 }
 
-impl app.setUrgency(todoId: str, urgency: str) -> None {
-    root spawn UpdateUrgency(todo_id=todoId, urgency=urgency);
+impl app.setPriority(todoId: str, priority: str) -> None {
+    root spawn UpdatePriority(todo_id=todoId, priority=priority);
     todos = todos.map(
         lambda t: any -> any {
             if t.id == todoId {
                 return {
                     "id": t.id, "title": t.title,
                     "completed": t.completed, "category": t.category,
-                    "urgency": urgency, "due_date": t.due_date
+                    "priority": priority, "due_date": t.due_date
                 };
             }
             return t;
@@ -62,7 +62,7 @@ impl app.setDueDate(todoId: str, dueDate: str) -> None {
                 return {
                     "id": t.id, "title": t.title,
                     "completed": t.completed, "category": t.category,
-                    "urgency": t.urgency, "due_date": dueDate
+                    "priority": t.priority, "due_date": dueDate
                 };
             }
             return t;

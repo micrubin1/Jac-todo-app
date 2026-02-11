@@ -13,7 +13,7 @@ def:pub EisenhowerMatrix(todos: list) -> any {
     q4 = [];  # Not Important & Not Urgent — Eliminate
 
     for todo in activeTodos {
-        isImportant = todo.urgency == "high";
+        isImportant = todo.priority == "high";
         isUrgent = todo.due_date and (Date.parse(todo.due_date) - Date.now()) <= THREE_DAYS_MS;
 
         if isImportant and isUrgent {

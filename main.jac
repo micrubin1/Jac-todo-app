@@ -44,7 +44,7 @@ node Todo {
         title: str,
         completed: bool = False,
         category: str = "other",
-        urgency: str = "low",
+        priority: str = "low",
         due_date: str = "";
 }
 
@@ -73,7 +73,7 @@ walker:priv AddTodo {
             "title": new_todo[0].title,
             "completed": new_todo[0].completed,
             "category": new_todo[0].category,
-            "urgency": new_todo[0].urgency,
+            "priority": new_todo[0].priority,
             "due_date": new_todo[0].due_date
         };
     }
@@ -92,7 +92,7 @@ walker:priv ListTodos {
             "title": here.title,
             "completed": here.completed,
             "category": here.category,
-            "urgency": here.urgency,
+            "priority": here.priority,
             "due_date": here.due_date
         });
     }
@@ -115,16 +115,16 @@ walker:priv ToggleTodo {
             report {
                 "id": here.id,
                 "completed": here.completed,
-                "urgency": here.urgency,
+                "priority": here.priority,
                 "due_date": here.due_date
             };
         }
     }
 }
 
-walker:priv UpdateUrgency {
+walker:priv UpdatePriority {
     has todo_id: str;
-    has urgency: str;
+    has priority: str;
 
     can search with Root entry {
         visit [-->];
@@ -132,10 +132,10 @@ walker:priv UpdateUrgency {
 
     can update with Todo entry {
         if here.id == self.todo_id {
-            here.urgency = self.urgency;
+            here.priority = self.priority;
             report {
                 "id": here.id,
-                "urgency": here.urgency
+                "priority": here.priority
             };
         }
     }
