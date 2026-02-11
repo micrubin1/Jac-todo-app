@@ -1,6 +1,7 @@
-# my-todo-app
+# Micah's Todo App
 
-A Jac client-side application with React support.
+Name: Micah Rubin  
+UMID: 9188 2977
 
 ## Project Structure
 
